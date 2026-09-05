@@ -73,6 +73,13 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
+    void handleNoResourceFoundException() {
+        org.springframework.web.servlet.resource.NoResourceFoundException ex = mock(org.springframework.web.servlet.resource.NoResourceFoundException.class);
+        ResponseEntity<ErrorResponse> response = exceptionHandler.handleNoResourceFoundException(ex, request);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
     void handleResourceNotFoundException() {
         ResourceNotFoundException ex = new ResourceNotFoundException("Not found");
         ResponseEntity<ErrorResponse> response = exceptionHandler.handleResourceNotFoundException(ex, request);

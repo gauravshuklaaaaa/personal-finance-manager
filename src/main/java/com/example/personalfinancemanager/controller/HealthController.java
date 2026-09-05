@@ -9,10 +9,19 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/health")
 public class HealthController {
 
-    @GetMapping
+    @GetMapping("/")
+    public ResponseEntity<Map<String, Object>> rootEndpoint() {
+        return ResponseEntity.ok(Map.of(
+                "message", "Welcome to Personal Finance Manager REST API",
+                "status", "UP",
+                "timestamp", LocalDateTime.now().toString(),
+                "healthCheck", "/api/health"
+        ));
+    }
+
+    @GetMapping("/api/health")
     public ResponseEntity<Map<String, Object>> healthCheck() {
         return ResponseEntity.ok(Map.of(
                 "status", "UP",
