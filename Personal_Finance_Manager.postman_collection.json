@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
+		"name": "Personal Finance Manager API",
+		"description": "Postman Collection for testing Personal Finance Manager Spring Boot REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"user@example.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"John Doe\",\n  \"phoneNumber\": \"+1234567890\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "logout"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Create Custom Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"SideBusinessIncome\",\n  \"type\": \"INCOME\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Delete Custom Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/SideBusinessIncome",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "categories", "SideBusinessIncome"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 50000.00,\n  \"date\": \"2024-01-15\",\n  \"category\": \"Salary\",\n  \"description\": \"January Salary\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/transactions",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "transactions"]
+						}
+					}
+				},
+				{
+					"name": "Get Transactions (Filtered)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/transactions?startDate=2024-01-01&endDate=2024-01-31",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "transactions"],
+							"query": [
+								{ "key": "startDate", "value": "2024-01-01" },
+								{ "key": "endDate", "value": "2024-01-31" }
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 60000.00,\n  \"description\": \"Updated January Salary\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/transactions/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "transactions", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/transactions/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "transactions", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Savings Goals",
+			"item": [
+				{
+					"name": "Create Savings Goal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"goalName\": \"Emergency Fund\",\n  \"targetAmount\": 5000.00,\n  \"targetDate\": \"2026-01-01\",\n  \"startDate\": \"2025-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/goals",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "goals"]
+						}
+					}
+				},
+				{
+					"name": "Get All Goals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/goals",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "goals"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Goal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/goals/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "goals", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Goal",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"targetAmount\": 6000.00,\n  \"targetDate\": \"2026-02-01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/goals/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "goals", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Goal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/goals/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "goals", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Monthly Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/monthly/2024/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "reports", "monthly", "2024", "1"]
+						}
+					}
+				},
+				{
+					"name": "Yearly Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/yearly/2024",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "reports", "yearly", "2024"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "health"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
