@@ -25,5 +25,5 @@ services:
 databases:
   - name: finance-postgres
     databaseName: finance_db
-    user: postgres
+    user: finance_user
     plan: free
