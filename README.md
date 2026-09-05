@@ -8,7 +8,8 @@ A comprehensive, production-quality RESTful API backend built with Java 17, Spri
 The Personal Finance Manager system provides a secure financial API allowing users to:
 - Register securely with encrypted password storage.
 - Maintain HTTP session-based authentication.
-- Perform CRUD operations on income and expense transactions.
+- **Live Deployed API URL**: [https://personal-finance-manager-e4ey.onrender.com](https://personal-finance-manager-e4ey.onrender.com)
+- **GitHub Repository**: [https://github.com/gauravshuklaaaaa/personal-finance-manager](https://github.com/gauravshuklaaaaa/personal-finance-manager)
 - Organize transactions using default categories (Salary, Rent, Food, etc.) or create user-specific custom categories.
 - Define savings goals, track real-time goal progress based on net savings, remaining amounts, and percentages.
 - Generate aggregated monthly and yearly reports breakdown by category with net savings calculation.
